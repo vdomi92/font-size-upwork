@@ -3,24 +3,20 @@ const btnZoomOutRef = document.querySelector('#zoomOut');
 const bodyRef = document.querySelector('body');
 
 const currentFontSize = parseInt(window.getComputedStyle(bodyRef).fontSize);
-console.log(currentFontSize);
 
 const getDefaultFontSize = () => {
   const html = document.querySelector('html');
   html.style.fontSize = 'unset';
   const htmlFontSize = parseInt(window.getComputedStyle(html).fontSize);
-  console.log(htmlFontSize);
+  return htmlFontSize;
 };
-
-const valami = document.querySelector('html');
-console.log(valami);
 
 const getZoomLevel = () => {
   return localStorage.getItem('zoomLevel');
 };
 
 window.onload = () => {
-  getDefaultFontSize();
+  const defaultFontSize = getDefaultFontSize();
   const zoomLevel = getZoomLevel();
   if (!zoomLevel) {
     localStorage.setItem('zoomLevel', 0);
