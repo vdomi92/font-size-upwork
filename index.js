@@ -7,8 +7,7 @@ const currentFontSize = parseInt(window.getComputedStyle(bodyRef).fontSize);
 const getDefaultFontSize = () => {
   const html = document.querySelector('html');
   html.style.fontSize = 'unset';
-  const htmlFontSize = parseInt(window.getComputedStyle(html).fontSize);
-  return htmlFontSize;
+  return parseInt(window.getComputedStyle(html).fontSize);
 };
 
 const getZoomLevel = () => {
@@ -27,7 +26,7 @@ window.onload = () => {
 
 btnZoomInRef.addEventListener('click', () => zoomInClickHandler());
 const zoomInClickHandler = () => {
-  const zoomLevel = getZoomLevel();
+  let zoomLevel = getZoomLevel();
   if (!zoomLevel) {
     localStorage.setItem('zoomLevel', 1);
   } else {
@@ -41,7 +40,7 @@ const zoomInClickHandler = () => {
 
 btnZoomOutRef.addEventListener('click', () => zoomOutClickHandler());
 const zoomOutClickHandler = () => {
-  const zoomLevel = getZoomLevel();
+  let zoomLevel = getZoomLevel();
   if (!zoomLevel) {
     localStorage.setItem('zoomLevel', -1);
   } else {
